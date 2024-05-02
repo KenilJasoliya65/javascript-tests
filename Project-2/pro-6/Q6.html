@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body 
+        {
+            font-family :cursive;
+            background-color: #be5a6b;
+        }
+        label 
+        {
+            margin-bottom: 5px;
+            font-size:larger;
+            font-weight:lighter;
+            color: black;
+        }
+        input
+        {
+            width: 243px;
+            height: 35px;
+            padding: 5px;
+            font-size:larger;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+        }
+        button 
+        {
+            width: 250px;
+            height: 50px;
+            margin-top: 10px;
+            margin-left: 150px;
+            background-color: black;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #222422;
+        }  
+    </style>
+</head>
+<body>
+    <div>
+        <h1>positive , negative or zero</h1>
+        <label type="text">enter value : </label>
+        <input type="number" id="value" placeholder="enter here">
+        <button onclick="checknumber()">checknumber</button>
+    </div>
+    <p id="result"></p>
+    <script src="./Q6.js"></script>
+</body>
+</html>
