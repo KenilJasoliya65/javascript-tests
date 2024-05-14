@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Converter</title>
+    <script src="converter.js"></script>
+</head>
+<body>
+    <h1>Converter</h1>
+    <div>
+        <h2>Convert meters to feet</h2>
+        <input type="number" id="metersInput" placeholder="Enter meters">
+        <button onclick="convertMetersToFeet()">Convert</button>
+        <p id="metersToFeetResult"></p>
+    </div>
+
+    <div>
+        <h2>Convert Celsius to Fahrenheit</h2>
+        <input type="number" id="celsiusInput" placeholder="Enter Celsius">
+        <button onclick="convertCelsiusToFahrenheit()">Convert</button>
+        <p id="celsiusToFahrenheitResult"></p>
+    </div>
+
+    <div>
+        <h2>Convert dollars to rupees</h2>
+        <input type="number" id="dollarsInput" placeholder="Enter dollars">
+        <input type="number" id="exchangeRateInput" placeholder="Enter exchange rate" value="74.50">
+        <button onclick="convertDollarsToRupees()">Convert</button>
+        <p id="dollarsToRupeesResult"></p>
+    </div>
+    <script>
+    const convertMetersToFeet = () => {
+    const meters = parseFloat(document.getElementById('metersInput').value);
+    if (isNaN(meters)) {
+        document.getElementById('metersToFeetResult').innerText = 'Please enter a valid number';
+        return;
+    }
+    const feet = meters * 3.28084;
+    document.getElementById('metersToFeetResult').innerText = `${meters} meters is equal to ${feet.toFixed(2)} feet.`;
+};
+
+const convertCelsiusToFahrenheit = () => {
+    const celsius = parseFloat(document.getElementById('celsiusInput').value);
+    if (isNaN(celsius)) {
+        document.getElementById('celsiusToFahrenheitResult').innerText = 'Please enter a valid number';
+        return;
+    }
+    const fahrenheit = (celsius * 9/5) + 32;
+    document.getElementById('celsiusToFahrenheitResult').innerText = `${celsius}°C is equal to ${fahrenheit.toFixed(2)}°F.`;
+};
+
+const convertDollarsToRupees = () => {
+    const dollars = parseFloat(document.getElementById('dollarsInput').value);
+    const exchangeRate = parseFloat(document.getElementById('exchangeRateInput').value);
+    if (isNaN(dollars) || isNaN(exchangeRate)) {
+        document.getElementById('dollarsToRupeesResult').innerText = 'Please enter a valid number';
+        return;
+    }
+    const rupees = dollars * exchangeRate;
+    document.getElementById('dollarsToRupeesResult').innerText = `$${dollars} is equal to ₹${rupees.toFixed(2)}.`;
+};
+
+
+    </script>
+</body>
+</html>
