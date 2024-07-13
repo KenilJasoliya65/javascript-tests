@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="weather()">weather</button>
+    <h3>country : <span id="country"></span></h3>
+    <h3>city : <span id="name"></span></h3>
+    <h3>Time_Zone : <span id="tz"></span></h3>
+    <h3>Temperature *c : <span id="temp_c"></span></h3>
+    <h3>Temperature *f : <span id="temp_f"></span></h3>
+    <h3>condition : <span id="text"></span></h3>
+</body>
+</html>
+<script>
+    const weather = () =>
+    {
+        fetch(
+            "http://api.weatherapi.com/v1/current.json?key=ac44fa3ce2794a4aafd155223240307&q=india&aqi=no")
+    .then((response) => response.json())
+    .then((data) =>
+    {
+        console.log(data);
+        console.log(data.location.country);
+        console.log(data.location.name);
+
+        document.getElementById("country").innerHTML = data.location.country;
+        document.getElementById("name").innerHTML = data.location.name;
+        document.getElementById("tz").innerHTML = data.location.tz_id;
+        document.getElementById("temp_c").innerHTML = data.current.temp_c;
+        document.getElementById("temp_f").innerHTML = data.current.temp_f;
+        document.getElementById("text").innerHTML = data.current.condition.text;
+    })
+    .catch((err) => console.log(err));
+};
+</script>

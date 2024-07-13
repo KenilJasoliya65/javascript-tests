@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corona APIs</title>
+</head>
+<body>
+    <button onclick="corona()">corona</button>
+    <h3>data : <span id="AP"></span></h3>
+    <h3>Confirmed :<span id="confirmed"></span></h3>
+    <h3>Deceased :<span id="deceased"></span></h3>
+    <h3>Recovered :<span id="recovered"></span></h3>
+    <h3>Tested :<span id="tested"></span></h3>
+    <h3>Vaccinated1 :<span id="vaccinated1"></span></h3>
+    <h3>Vaccinated1 :<span id="vaccinated2"></span></h3>
+
+    <h3>Confirmed : <span id="confirmed1"></span></h3>
+</body>
+</html>
+<script>
+    const corona = () =>{
+        fetch("https://data.covid19india.org/v4/min/data.min.json")
+        .then((response) => response.json())
+        .then((data) =>{
+            console.log(data);
+            console.log(data.AP.delta);
+            console.log(data.AP.delta21_14);
+            console.log(data.AP.delta7);
+
+            console.log(data.AP)
+            document.getElementById("AP").innerHTML = data.AP;
+
+            document.getElementById("confirmed").innerHTML = data.AP.delta.confirmed;
+            document.getElementById("deceased").innerHTML = data.AP.delta.deceased;
+            document.getElementById("recovered").innerHTML = data.AP.delta.recovered;
+            document.getElementById("tested").innerHTML = data.AP.delta.tested;
+            document.getElementById("vaccinated1").innerHTML = data.AP.delta.vaccinated1;
+            document.getElementById("vaccinated2").innerHTML = data.AP.delta.vaccinated2;
+
+            document.getElementById("confirmed1").innerHTML = data.AP.delta21_14.confirmed;
+        })
+        .catch((err) => console.log(err));
+    }
+</script>
